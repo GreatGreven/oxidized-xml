@@ -1,23 +1,6 @@
-use std::error::Error;
-use std::{fmt, fs};
-use std::fmt::Formatter;
+use std::fs;
 use amxml::dom::*;
 use amxml::xmlerror::XmlError;
-
-#[derive(
-Debug,
-)]
-pub struct XMLError;
-
-impl Error for XMLError {
-    
-}
-
-impl fmt::Display for XMLError {
-    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        todo!()
-    }
-}
 
 pub fn retrieve_values_by(xpath: &str, infile_name: &str) -> Result<Vec<String>, XmlError> {
     let file_content = fs::read_to_string(infile_name).unwrap_or(String::new());
@@ -74,11 +57,8 @@ mod tests {
         assert_eq!(result.get(0).expect("Vector is empty"), "Obs!");
     }
 
-
     #[test]
     fn test_empty_xml() {
         let doc = new_document("").unwrap();
     }
-
-
 }
