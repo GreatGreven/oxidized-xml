@@ -8,3 +8,5 @@ edition = "2021"
 [dependencies]
 oxidized-xml-fetcher = { path = "../oxidized-xml-fetcher"}
 structopt = "0.3.26"
+atty = "0.2.14"
+clap = { version = "^4.3.16", features = [ "derive" ] }

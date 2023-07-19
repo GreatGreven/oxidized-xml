@@ -1,17 +1,12 @@
-use std::io::{stdin, StdinLock};
+use clap::Parser;
 
+#[derive(Parser)]
+#[command(author, version, about, long_about = None)]
 pub struct Opts {
+    #[arg(short, long)]
     pub xpath: String,
-    pub xml_buffer: String,
-    // pub stdin_handle: StdinLock<'a>,
-}
-
-impl Opts {
-    pub fn new() -> Self {
-        Self {
-            // stdin_handle: stdin().lock(),
-            xpath: String::new(),
-            xml_buffer: String::new(),
-        }
-    }
+    #[arg(last = true, default_value="")]
+    pub file_name: String,
+    #[arg(skip)]
+    pub xml_buffer: Option<String>,
 }

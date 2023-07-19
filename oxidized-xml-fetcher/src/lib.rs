@@ -17,8 +17,6 @@ pub fn retrieve_values_in_xml_by(xpath: &str, content: &str) -> Result<Vec<Strin
     Ok(values)
 }
 
-
-
 fn extract_value_from(node: NodePtr) -> Vec<String>{
     let mut values = Vec::new();
     if node.children().is_empty() {
@@ -37,12 +35,12 @@ fn extract_value_from(node: NodePtr) -> Vec<String>{
     values
 }
 
+#[allow(dead_code)]
 fn debug_node(node: NodePtr) {
     println!("node:{:?}", node);
     println!("name:{:?}", node.name());
     println!("children:{:?}", node.children());
     println!("value {:?}", node.value());
-
 }
 
 #[cfg(test)]
