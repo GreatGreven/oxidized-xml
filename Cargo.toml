@@ -1,2 +1,2 @@
 [workspace]
-members = ["oxidized-xml-cli", "oxidized-xml-fetcher"]
+members = ["oxidized-xml-cli", "oxidized-xml-core"]
