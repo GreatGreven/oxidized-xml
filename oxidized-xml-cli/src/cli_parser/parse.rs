@@ -22,11 +22,12 @@ fn parse_arguments() -> Opts {
     options
 }
 
+
 fn parse_input_file_to_buffer(file_name: &String) -> Option<String> {
-    let mut text = String::new();
     if file_name.is_empty() && is_piped_stdin(&None) {
         return None
     }
+    let mut text = String::new();
     match fs::read_to_string(file_name) {
         Ok(contents) => text = contents,
         Err(error) => {

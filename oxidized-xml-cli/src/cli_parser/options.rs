@@ -1,5 +1,6 @@
 use clap::Parser;
 
+/// This data structure is used to store the options available in the CLI
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
 pub struct Opts {
