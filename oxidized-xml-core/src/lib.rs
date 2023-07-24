@@ -10,7 +10,6 @@ pub fn retrieve_values_by(xpath: &str, infile_name: &str) -> Result<Vec<String>,
 pub fn retrieve_values_in_xml_by(xpath: &str, content: &str) -> Result<Vec<String>, XmlError> {
     let mut values = Vec::new();
     let content = trim_whitespace(content);
-    println!("{:?}", content);
     let doc = new_document(content.as_str()).expect("Could not parse XML");
     doc.each_node(xpath, |node| {
         let mut inner_values: Vec<String> = extract_value_from(node);
@@ -29,7 +28,6 @@ fn trim_whitespace(buffer: &str) -> String {
 
 fn extract_value_from(node: NodePtr) -> Vec<String>{
     let mut values = Vec::new();
-    debug_node(node.clone());
     if node.children().is_empty() {
         //if node is dead-end
         //get the value even if it's empty
@@ -40,7 +38,6 @@ fn extract_value_from(node: NodePtr) -> Vec<String>{
         // misleading and we got to this point in the xml-structure by using xpath so manually
         // traversing down the xml-structure
         for child in node.children() {
-            debug_node(child.clone());
             if ! child.value().is_empty(){
                 values.push(child.value());
             }
